@@ -21,7 +21,9 @@
 
 <script setup>
   ///api/dummy/site
-  const {data} = await useFetch('/api/site')
+  const route = useRoute()
+  const username = route.params.user
+  const {data} = await useFetch('/api/'+username+'/site')
   const buttonsBody = ref(data.value.site.body.buttons).value
   const buttonsHeader = ref(data.value.site.header.buttons).value
   const backgroundColor = ref(data.value.site.body.styles.backgroundGradient).value
