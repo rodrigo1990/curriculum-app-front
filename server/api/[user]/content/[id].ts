@@ -1,5 +1,6 @@
 export default defineEventHandler (async (event) => {
     let id = Number(getRouterParam(event, 'id'))
-    const response = await $fetch('http://localhost/api/rodrigo1990/'+id);
+    let user = String(getRouterParam(event, 'user'))
+    const response = await $fetch('http://localhost/api/'+user+'/'+id);
     return response.data;
 })
