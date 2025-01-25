@@ -19,7 +19,7 @@
     // const data = ref(getContent.value.response)
 
 
-    const {data: content} = await useFetch('/api/'+route.params.user+'/content/'+route.params.id)
+    const {data: content} = await useFetch('/api/'+route.params.user+'/'+route.params.slug)
     console.log(content.value.page.content.content)
     const data = ref(content.value.page.content.content)
     const color = ref(content.value.page.content.content.color)
