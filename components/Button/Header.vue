@@ -1,6 +1,6 @@
 <template>
     <div>
-      <NuxtLink :to="`/${route.params.user}/content/${contentId}`" class="btn" :class="class">{{ description }}</NuxtLink> 
+      <NuxtLink :to="`/${route.params.user}/${slug}`" class="btn" :class="class">{{ description }}</NuxtLink>
     </div>
 </template>
 
@@ -11,8 +11,8 @@ const props = defineProps({
     type: String,
     required:true
   },
-  contentId:{
-    type:Number,
+  slug:{
+    type:String,
     required:true
   },
   class:{

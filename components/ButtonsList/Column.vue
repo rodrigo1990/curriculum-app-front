@@ -3,7 +3,7 @@
     <ul>
         <li v-for="(item) in props.buttons" :key="item.button.id">
         
-          <ButtonColumn :contentId="item.button.page_id"
+          <ButtonColumn :slug="item.button.slug"
            :description="item.button.name"
             :class="item.class"
             :styles="item.styles"
