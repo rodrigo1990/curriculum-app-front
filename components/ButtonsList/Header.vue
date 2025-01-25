@@ -2,7 +2,7 @@
   <div class="buttons-header">
     <ul>
         <li v-for="(item, index) in props.buttons" :key="item.button.id">
-          <ButtonHeader :contentId="item.button.page_id"
+          <ButtonHeader :slug="item.button.slug"
           :description="item.button.name"
           :class="item.class"
           :styles="item.styles"

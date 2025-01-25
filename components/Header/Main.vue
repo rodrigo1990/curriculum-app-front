@@ -22,5 +22,4 @@ const props = defineProps({
     required:false
   }
 })
-console.log(props.buttons)
 </script>
