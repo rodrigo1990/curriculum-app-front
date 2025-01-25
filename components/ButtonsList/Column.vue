@@ -21,7 +21,6 @@ const props = defineProps({
     required:true
   },
 })
-console.log(props.buttons)
 </script>
 
 <style scoped lang="scss">
