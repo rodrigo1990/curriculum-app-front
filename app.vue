@@ -12,6 +12,10 @@ const route = useRoute()
 let layout = null
 if(!route.params.user)
   layout = "default";
-else
-  layout = "user";
+else {
+  if( route.path.includes("admin"))
+    layout = "admin"
+  else
+    layout = "user";
+}
 </script>
