@@ -55,7 +55,7 @@
 </style>
 <style scoped lang="scss">
   section#body{
-    margin-top:6rem;
+    margin-top:2rem;
   }
   section#header{
     margin-top:1.5rem
