@@ -2,7 +2,7 @@
   <div class="profile-img-container animate__animated animate__fadeIn">
     
         <ClientOnly>
-          <div class="profile-img" :style="{ 'background-image': 'url(/images/user/profile/'+img+'' }"> </div>
+          <div class="profile-img" :style="{ 'background-image': 'url(/images/site/profile/'+img+'' }"> </div>
           <template #fallback>
             <!-- this will be rendered on server side -->
               <span class="loader"></span>>
