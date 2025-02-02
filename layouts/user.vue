@@ -1,6 +1,6 @@
 <template>
 <div id="global-wrapper">
-  <HeaderMain :buttons="buttonsHeader"/>
+  <HeaderMain :buttons="buttonsHeader" :logo="logo"/>
   <section id="body">
     <div class="container-fluid">
       <div class="row">
@@ -28,6 +28,7 @@
   const buttonsHeader = ref(data.value.site.header.buttons).value
   const backgroundColor = ref(data.value.site.body.styles.backgroundGradient).value
   const profileImg = ref(data.value.site.profile_image).value
+  const logo = ref(data.value.site.logo).value
 
   if(import.meta.client ) {
     useHead({
