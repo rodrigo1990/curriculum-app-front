@@ -14,7 +14,7 @@
 <script setup>
   const email = ref(null);
   const password = ref(null);
-
+  await $fetch("/api/admin/csrf");
   const login = async () => {
     try {
       const response = await $fetch("/api/admin/login", {
