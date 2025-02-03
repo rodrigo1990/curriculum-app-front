@@ -1,5 +1,10 @@
 <template>
     <div>
+      <div style="border:1px solid lightgray;padding:20px 20px;padding-bottom: 62px;padding-top: 19px;">
+        <h3 style="color:lightgray;float:left;">CV Maker</h3>
+        <a style="float:right;margin-bottom:20px;float:right;" href="admin/login">login</a>
+      </div>
+      <br><br>
         <h1>Company Logo</h1>
         <p>Welcome to the first innovative curriculum creator, happy to have you here :) </p>
         <br><br>
