@@ -12,6 +12,7 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "nuxt": "^3.13.0",
+    "nuxt-auth-sanctum": "^0.5.4",
     "sass": "^1.80.2",
     "sass-loader": "^16.0.2",
     "vue": "latest",
