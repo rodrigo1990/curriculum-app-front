@@ -1,13 +1,23 @@
 <template>
     <div>
-        <div style="border:1px solid lightgray;padding:20px 20px;">
-          <h3 style="color:lightgray">CV Maker</h3>
-          <a @click="logout" v-if="isAuthenticated">Logout</a>
+        <div style="
+          border:1px solid lightgray;
+          padding:20px 20px;
+          display:flex;
+          flex-direction:row;
+          justify-content:space-between;
+          align-items: center;"
+        >
+          <h3 style="color:lightgray;margin:0">CV Maker</h3>
+          <a @click="logout" v-if="isAuthenticated" style="font-weight: bold;">Logout</a>
         </div>
       <br><br>
         <slot />
     </div>
 </template>
+<style lang="scss">
+  @import url("~/assets/styles/app.scss");
+</style>
 <script setup>
 const user = useSanctumUser()
 const isAuthenticated = !!user.value
