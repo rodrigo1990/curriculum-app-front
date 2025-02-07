@@ -13,11 +13,16 @@ export default defineNuxtConfig({
 
   sanctum: {
     baseUrl: 'http://localhost:80',
+    redirectIfAuthenticated: false,
     mode: 'cookie',
     endpoints: {
       login: 'api/admin/login',
       logout: 'api/admin/logout'
-    },// Laravel API
+    },
+    redirect: {
+      keepRequestedRoute: false,
+      onLogout: '/admin/login',
+    },
   },
 
   css: [

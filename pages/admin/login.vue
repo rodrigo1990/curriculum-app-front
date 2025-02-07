@@ -13,17 +13,20 @@
 </template>
 <script setup>
 const { login } = useSanctumAuth()
-const user = useSanctumUser();
 const email = ref(null)
 const password = ref(null)
-console.log('user', user)
+
 const submit = async () => {
+
   const credentials = {
     email: email.value,
     password: password.value,
   }
-  console.log(credentials)
-  await login(credentials)
+
+  await login(credentials).then( () =>  {
+    const user = useSanctumUser();
+    navigateTo('/admin/'+user.value.username)
+  })
 }
 
 </script>
