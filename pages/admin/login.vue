@@ -7,28 +7,25 @@
       <br><br>
       <input v-model="password" class="form-control" placeholder="Password..." />
       <br><br>
-      <button type="button" class="btn btn-default" @click="login">Login</button>
+      <button type="button" class="btn btn-default" @click="submit">Login</button>
     </div>
   </div>
 </template>
 <script setup>
-  const email = ref(null);
-  const password = ref(null);
-  await $fetch("/api/admin/csrf");
-  const login = async () => {
-    try {
-      const response = await $fetch("/api/admin/login", {
-        method: "POST",
-        body: { email: email.value, password: password.value },
-      });
-
-      console.log("Login successful:", response);
-      alert("Login successful!");
-    } catch (error) {
-      console.error("Login failed:", error);
-      alert("Login failed! Check your credentials.");
-    }
+const { login } = useSanctumAuth()
+const user = useSanctumUser();
+const email = ref(null)
+const password = ref(null)
+console.log('user', user)
+const submit = async () => {
+  const credentials = {
+    email: email.value,
+    password: password.value,
   }
+  console.log(credentials)
+  await login(credentials)
+}
+
 </script>
 
 <style lang="scss" scoped>
