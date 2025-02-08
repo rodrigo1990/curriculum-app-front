@@ -28,33 +28,53 @@ onMounted(() => {
   checkAuthenticated()
 })
 
-watch(() => route.fullPath, () => {
+onBeforeMount(() => {
   checkAuthenticated()
+})
+
+watch(() => route.fullPath, () => {
+  checkAuthenticatedComparingUrls()
 })
 
 const checkAuthenticated = () => {
   const user = useSanctumUser()
-  isAuthenticated.value = !!user.value
-  if((route.params.user && !isAuthenticated.value) || user.value.username !== route.params.user) {
-    navigateTo('/admin/login');
+
+  if(user.value && route.params.user) {
+    if (user.value.username !== route.params.user)
+      navigateTo('/admin/'+user.value.username)
+  }
+
+  if(user.value) {
+    isAuthenticated.value = true
+    if ((route.params.user && !isAuthenticated.value)) {
+      forwardLogin()
+    }
+  }else{
+    isAuthenticated.value = false
+    forwardLogin()
   }
 }
+
+const checkAuthenticatedComparingUrls = () => {
+  const user = useSanctumUser()
+  if(user.value && route.params.user) {
+    isAuthenticated.value = true
+    if (user.value.username !== route.params.user) {
+      forwardLogin()
+    }
+  }else{
+    isAuthenticated.value = false
+  }
+}
+
 const logout = async () => {
   const { logout } = useSanctumAuth();
   await logout();
 }
 
-useHead({
-  style: [
-    {
-      children: `
-        body {
-          background-color: orange;
-        }
-      `
-    }
-  ]
-})
+const forwardLogin = () => {
+  navigateTo('/admin/login')
+}
 </script>
 
 <style lang="scss" scoped>
