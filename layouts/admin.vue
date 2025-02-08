@@ -22,11 +22,18 @@
 const route = useRoute()
 const isAuthenticated = ref(false);
 
-watch(() => route.fullPath, () => {
-  const user = useSanctumUser()
-   isAuthenticated.value = !!user.value
+onMounted(() => {
+  checkAuthenticated()
 })
 
+watch(() => route.fullPath, () => {
+  checkAuthenticated()
+})
+
+const checkAuthenticated = () => {
+  const user = useSanctumUser()
+  isAuthenticated.value = !!user.value
+}
 const logout = async () => {
   const { logout } = useSanctumAuth();
   await logout();
