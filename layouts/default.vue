@@ -1,5 +1,17 @@
 <template>
     <div>
+      <div style="
+          border:1px solid lightgray;
+          padding:20px 20px;
+          display:flex;
+          flex-direction:row;
+          justify-content:space-between;
+          align-items: center;"
+      >
+        <h3 style="color:lightgray;margin:0">CV Maker</h3>
+        <a style="font-weight: bold;color:black;margin-bottom:20px;float:right;text-decoration: none;" href="admin/login">login</a>
+      </div>
+      <br><br>
         <h1>Company Logo</h1>
         <p>Welcome to the first innovative curriculum creator, happy to have you here :) </p>
         <br><br>

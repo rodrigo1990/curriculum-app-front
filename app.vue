@@ -10,8 +10,12 @@
 // You might choose this based on an API call or logged-in status
 const route = useRoute()
 let layout = null
-if(!route.params.user)
+
+if(route.path.includes("admin")){
+  layout = "admin"
+}else if(!route.params.user)
   layout = "default";
-else
-  layout = "user";
+else {
+    layout = "user";
+}
 </script>
