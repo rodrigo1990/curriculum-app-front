@@ -23,10 +23,16 @@ const submit = async () => {
     password: password.value,
   }
 
-  await login(credentials).then( () =>  {
-    const user = useSanctumUser();
-    navigateTo('/admin/'+user.value.username)
-  })
+  try {
+    await login(credentials).then(() => {
+      const user = useSanctumUser();
+      navigateTo('/admin/' + user.value.username)
+    })
+  }catch(err) {
+    if(err.response.status === 401) {
+      alert('You have not registered yet!')
+    }
+  }
 }
 
 </script>
