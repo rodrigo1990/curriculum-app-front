@@ -19,6 +19,8 @@
   @import url("~/assets/styles/app.scss");
 </style>
 <script setup>
+import {navigateTo} from "#app";
+
 const route = useRoute()
 const isAuthenticated = ref(false);
 
@@ -33,6 +35,9 @@ watch(() => route.fullPath, () => {
 const checkAuthenticated = () => {
   const user = useSanctumUser()
   isAuthenticated.value = !!user.value
+  if(route.params.user && !isAuthenticated.value){
+    navigateTo('/admin/login');
+  }
 }
 const logout = async () => {
   const { logout } = useSanctumAuth();
