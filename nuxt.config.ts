@@ -1,11 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  /*components: [
-   {
-     path: '~/components',
-     pathPrefix: false,
-   },
- ],*/
+  routeRules: {
+    '/admin/**': { ssr: false },
+  },
+
   modules: [
       '@bootstrap-vue-next/nuxt',
       'nuxt-auth-sanctum'
