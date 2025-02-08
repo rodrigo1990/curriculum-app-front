@@ -35,7 +35,7 @@ watch(() => route.fullPath, () => {
 const checkAuthenticated = () => {
   const user = useSanctumUser()
   isAuthenticated.value = !!user.value
-  if(route.params.user && !isAuthenticated.value){
+  if((route.params.user && !isAuthenticated.value) || user.value.username !== route.params.user) {
     navigateTo('/admin/login');
   }
 }
