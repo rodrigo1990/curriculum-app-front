@@ -19,8 +19,14 @@
   @import url("~/assets/styles/app.scss");
 </style>
 <script setup>
-const user = useSanctumUser()
-const isAuthenticated = !!user.value
+const route = useRoute()
+const isAuthenticated = ref(false);
+
+watch(() => route.fullPath, () => {
+  const user = useSanctumUser()
+   isAuthenticated.value = !!user.value
+})
+
 const logout = async () => {
   const { logout } = useSanctumAuth();
   await logout();
