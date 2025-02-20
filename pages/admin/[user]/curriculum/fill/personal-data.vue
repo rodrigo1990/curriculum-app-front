@@ -20,10 +20,6 @@
       </div>
       <br>
       <button class="btn btn-primary">Next</button>
-<!--      <NuxtLink :to="'/admin/'+$route.params.user+'/curriculum/fill/profile-picture'"-->
-<!--                class="btn btn-primary">-->
-<!--        Next-->
-<!--      </NuxtLink>-->
     </Form>
   </div>
 </template>
