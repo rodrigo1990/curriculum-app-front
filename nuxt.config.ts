@@ -8,6 +8,7 @@ export default defineNuxtConfig({
       '@bootstrap-vue-next/nuxt',
       'nuxt-auth-sanctum',
       '@vee-validate/nuxt',
+      '@samk-dev/nuxt-vcalendar'
   ],
 
   sanctum: {
