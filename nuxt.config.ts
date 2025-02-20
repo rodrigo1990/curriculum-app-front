@@ -6,7 +6,8 @@ export default defineNuxtConfig({
 
   modules: [
       '@bootstrap-vue-next/nuxt',
-      'nuxt-auth-sanctum'
+      'nuxt-auth-sanctum',
+      '@vee-validate/nuxt',
   ],
 
   sanctum: {
