@@ -28,11 +28,12 @@
   </div>
 </template>
 <script setup>
+  const route = useRoute()
   const birthday = ref(new Date());
   const showCalendar = ref(false);
   const calendarBox = ref(null);
   const onSubmit = (values) => {
-    console.log(values);
+    navigateTo('/admin/'+route.params.user+'/curriculum/fill/profile-picture')
   }
 
   const validateName = (name) => {
