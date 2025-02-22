@@ -69,5 +69,5 @@
 </script>
 
 <style scoped lang="scss">
-
+  @import url("~/assets/styles/calendar-box.scss");
 </style>

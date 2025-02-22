@@ -40,5 +40,4 @@
 </script>
 <style scoped lang="scss">
   @import url("~/assets/styles/admin/curriculum/fill/personal-data.scss");
-  @import url("~/assets/styles/calendar-box.scss");
 </style>
