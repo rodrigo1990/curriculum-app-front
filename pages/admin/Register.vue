@@ -32,7 +32,9 @@ const setPasswordInState = (password) => {
   console.log('password state',password.value)
 }
 
-
+const validateUsername = (username) => {
+  console.log(username)
+}
 </script>
 
 <template>
@@ -43,12 +45,14 @@ const setPasswordInState = (password) => {
       <br>
       <Form novalidate @submit="onSubmit">
         <InputEmail />
-        <br><br>
+        <br>
+        <InputName name="username" placeholder="Username" @input="validateUsername"/>
+        <br>
         <InputPassword name="password" placeholder="Password" :is-hard-mode="true" @input="setPasswordInState"/>
-        <br><br>
+        <br>
         <Field name="repeatPassword" type="password" class="form-control" placeholder="Repeat Password" :rules="validateRepeatPassword" />
         <ErrorMessage name="repeatPassword" />
-        <br><br>
+        <br>
         <button class="btn btn-default">Sign up!</button>
       </Form>
     </div>

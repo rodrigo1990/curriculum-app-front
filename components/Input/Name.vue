@@ -10,6 +10,8 @@
     },
   })
 
+  const emit = defineEmits(['input']);
+
   const validateName = (name) => {
     if(!name) return 'This field is required';
     const regex = /^[A-Za-z\s]+$/;
@@ -18,7 +20,13 @@
 </script>
 
 <template>
-  <Field :name="name" :type="name" class="form-control" :placeholder="placeholder" :rules="validateName"  />
+  <Field :name="name"
+         :type="name"
+         class="form-control"
+         :placeholder="placeholder"
+         :rules="validateName"
+         @input="(event) => emit('input', event.target.value)" />
+
   <ErrorMessage :name="name" />
 </template>
 
