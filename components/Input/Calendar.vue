@@ -1,22 +1,33 @@
 <template>
   <div class="calendar-box" ref="calendarBox">
         <span v-show="showCalendar">
-          <VDatePicker v-model="birthday" style="position:absolute;" />
+          <VDatePicker v-model="dateState" style="position:absolute;" />
         </span>
-    <Field name="birthday" type="birthday" class="form-control" placeholder="Birthday"
-           v-model="formattedBirthday"
+    <Field :name="name" :type="name" class="form-control" :placeholder="placeholder"
+           v-model="formattedDate"
            @click="showCalendar = !showCalendar"
-           :rules="validateBirthday" />
-    <ErrorMessage name="birthday" />
+           :rules="validateDate" />
+    <ErrorMessage :name="name" />
   </div>
 </template>
 
 <script setup lang="ts">
-  const birthday = ref(new Date());
+  const dateState = ref(new Date());
   const showCalendar = ref(false);
   const calendarBox = ref(null);
 
-  const validateBirthday = (date) => {
+  defineProps({
+    name: {
+      type:String,
+      required: true
+    },
+    placeholder: {
+      type:String,
+      required: false
+    },
+  })
+
+  const validateDate = (date) => {
     const regex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
     if(!date) return 'This field is required';
     return regex.test(date) ? true : 'This field must be a date in the format dd/mm/yyyy';
@@ -30,13 +41,13 @@
     return `${day}/${month}/${year}`;
   };
 
-  const formattedBirthday = computed(() => {
+  const formattedDate = computed(() => {
     const date = new Date();
-    if(birthday.value) {
-      if(formatDate(birthday.value) === formatDate(date))
+    if(dateState.value) {
+      if(formatDate(dateState.value) === formatDate(date))
         return '';
       else
-        return formatDate(birthday.value)
+        return formatDate(dateState.value)
     }
   });
 

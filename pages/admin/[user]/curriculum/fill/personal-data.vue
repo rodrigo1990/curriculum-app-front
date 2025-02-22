@@ -11,7 +11,7 @@
       <Field name="telephone" type="telephone"  class="form-control" placeholder="Telephone" />
       <ErrorMessage name="telephone" />
       <br>
-      <InputCalendar />
+      <InputCalendar name="birthday" placeholder="Birthdate"/>
       <br>
       <button class="btn btn-primary">Next</button>
     </Form>
