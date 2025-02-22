@@ -7,9 +7,10 @@
       <Form novalidate @submit="onSubmit">
         <InputEmail />
         <br><br>
-        <InputPassword />
+        <InputPassword name="password" placeholder="Password"/>
         <br><br>
         <button class="btn btn-default">Login</button>
+        <NuxtLink to="/admin/register" style="margin-left:1rem;">Are you new here ? Please register here</NuxtLink>
       </Form>
     </div>
   </div>
