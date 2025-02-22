@@ -1,19 +1,16 @@
 <script setup lang="ts">
 const passwordState = ref('');
-const client = useSanctumClient();
 
 const onSubmit = async (values) => {
-  await client('/api/admin/sign-up', {
+  await useFetch('/api/admin/register', {
     method: 'POST',
     body: {
       email: values.email,
       password: values.password
     }
   }).then(() => {
-    navigateTo('/admin/'+route.params.user+'/curriculum/fill/profile-picture')
-  }).error((err) => {
-    console.log(err)
-  });
+      console.log('User register ;)')
+  })
 }
 
 const validateRepeatPassword = (password) => {
