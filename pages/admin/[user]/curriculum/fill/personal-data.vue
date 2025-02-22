@@ -2,14 +2,11 @@
   <div class="panel">
     <h2>Personal data</h2>
     <Form novalidate @submit="onSubmit">
-      <Field name="name" type="name" class="form-control" placeholder="Name" :rules="validateName"  />
-      <ErrorMessage name="name" />
+      <InputName name="name" placeholder="Name" />
       <br>
-      <Field name="surname" type="surname"  class="form-control" placeholder="Surname" :rules="validateName"/>
-      <ErrorMessage name="surname" />
+      <InputName name="surname" placeholder="Surname" />
       <br>
-      <Field name="email" type="email"  class="form-control" placeholder="Email" :rules="validateEmail"/>
-      <ErrorMessage name="email" />
+      <InputEmail />
       <br>
       <Field name="telephone" type="telephone"  class="form-control" placeholder="Telephone" />
       <ErrorMessage name="telephone" />
@@ -40,26 +37,8 @@
       console.log(err)
     });
   }
-
-  const validateName = (name) => {
-    if(!name) return 'This field is required';
-    const regex = /^[A-Za-z\s]+$/;
-    return regex.test(name) ? true : 'This field must contain only letters and spaces';
-  };
-
-
-
-  const validateEmail = (email) => {
-    if(!email) return 'This field is required';
-    const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/;
-    return regex.test(email) ? true : 'Add a valid email';
-  };
-
-
-
-
 </script>
 <style scoped lang="scss">
-@import url("~/assets/styles/admin/curriculum/fill/personal-data.scss");
-@import url("~/assets/styles/calendar-box.scss");
+  @import url("~/assets/styles/admin/curriculum/fill/personal-data.scss");
+  @import url("~/assets/styles/calendar-box.scss");
 </style>
