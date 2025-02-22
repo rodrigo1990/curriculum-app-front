@@ -15,6 +15,8 @@ const props = defineProps({
   },
 })
 
+const emit = defineEmits(['input']);
+
 const validatePassword = (password) => {
   if (!password) {
     return 'This field is required';
@@ -49,7 +51,12 @@ const validateHardPassword = (password) => {
 </script>
 
 <template>
-  <Field :name="name" :type="name" class="form-control" :placeholder="placeholder" :rules="validatePassword" />
+  <Field :name="name"
+         :type="name"
+         class="form-control"
+         :placeholder="placeholder"
+         :rules="validatePassword"
+         @input="(event) => emit('input', event.target.value)"/>
   <ErrorMessage :name="name" />
 </template>
 

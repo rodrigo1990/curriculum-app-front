@@ -1,4 +1,40 @@
 <script setup lang="ts">
+const passwordState = ref('');
+const client = useSanctumClient();
+
+const onSubmit = async (values) => {
+  await client('/api/admin/sign-up', {
+    method: 'POST',
+    body: {
+      email: values.email,
+      password: values.password
+    }
+  }).then(() => {
+    navigateTo('/admin/'+route.params.user+'/curriculum/fill/profile-picture')
+  }).error((err) => {
+    console.log(err)
+  });
+}
+
+const validateRepeatPassword = (password) => {
+  if (!password) {
+    return 'This field is required';
+  }
+
+  if (password != passwordState.value) {
+    return 'Passwords do not match';
+  }
+
+  return true;
+}
+
+const setPasswordInState = (password) => {
+  console.log('setPasswordInState');
+  console.log(password)
+  passwordState.value = password;
+  console.log('password state',password.value)
+}
+
 
 </script>
 
@@ -11,9 +47,10 @@
       <Form novalidate @submit="onSubmit">
         <InputEmail />
         <br><br>
-        <InputPassword name="password" placeholder="Password" is-hard-mode="true"/>
+        <InputPassword name="password" placeholder="Password" :is-hard-mode="true" @input="setPasswordInState"/>
         <br><br>
-        <InputPassword name="repeat-password" placeholder="Repeat Password"/>
+        <Field name="repeatPassword" type="password" class="form-control" placeholder="Repeat Password" :rules="validateRepeatPassword" />
+        <ErrorMessage name="repeatPassword" />
         <br><br>
         <button class="btn btn-default">Sign up!</button>
       </Form>
