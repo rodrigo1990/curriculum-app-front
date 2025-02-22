@@ -1,26 +1,27 @@
 <template>
   <div class="container">
     <div style="width:55rem;margin:auto;border:1px solid lightgray;border-radius:5px;padding:2rem;">
+
       <h2>Hello, please login =)</h2>
       <br>
-      <input v-model="email" class="form-control" placeholder="Email..." />
-      <br><br>
-      <input v-model="password" class="form-control" placeholder="Password..." />
-      <br><br>
-      <button type="button" class="btn btn-default" @click="submit">Login</button>
+      <Form novalidate @submit="onSubmit">
+        <InputEmail />
+        <br><br>
+        <InputPassword />
+        <br><br>
+        <button class="btn btn-default">Login</button>
+      </Form>
     </div>
   </div>
 </template>
 <script setup>
 const { login } = useSanctumAuth()
-const email = ref(null)
-const password = ref(null)
 
-const submit = async () => {
-
+const onSubmit = async (values) => {
+  console.log(values)
   const credentials = {
-    email: email.value,
-    password: password.value,
+    email: values.email,
+    password: values.password,
   }
 
   try {
@@ -34,6 +35,8 @@ const submit = async () => {
     }
   }
 }
+
+
 
 </script>
 
