@@ -46,7 +46,7 @@ const validateUsername = (username) => {
       <Form novalidate @submit="onSubmit">
         <InputEmail />
         <br>
-        <InputName name="username" placeholder="Username" @input="validateUsername"/>
+        <InputUsername/>
         <br>
         <InputPassword name="password" placeholder="Password" :is-hard-mode="true" @input="setPasswordInState"/>
         <br>
