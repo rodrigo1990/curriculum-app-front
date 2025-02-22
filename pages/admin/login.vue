@@ -5,11 +5,9 @@
       <h2>Hello, please login =)</h2>
       <br>
       <Form novalidate @submit="onSubmit">
-        <Field name="email" type="email" class="form-control" placeholder="Email..." :rules="validateEmail" />
-        <ErrorMessage name="email" />
+        <InputEmail />
         <br><br>
-        <Field name="password" type="password" class="form-control" placeholder="Password..." :rules="validatePassword" />
-        <ErrorMessage name="password" />
+        <InputPassword />
         <br><br>
         <button class="btn btn-default">Login</button>
       </Form>
@@ -38,18 +36,7 @@ const onSubmit = async (values) => {
   }
 }
 
-const validateEmail = (email) => {
-  if(!email) return 'This field is required';
-  const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/;
-  return regex.test(email) ? true : 'Add a valid email';
-};
 
-const validatePassword = (password) => {
-  if(!password)
-    return 'This field is required'
-  else
-    return true;
-};
 
 </script>
 
