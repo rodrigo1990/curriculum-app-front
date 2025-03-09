@@ -1,16 +1,11 @@
 <script setup lang="ts">
   const emit = defineEmits(['input']);
 
-  const validateUsername = async (name) => {
-    await useFetch('/api/admin/get-username', {
-      method: 'POST',
-      body: {
-        email: values.email,
-        password: values.password
-      }
-    }).then((response) => {
-      console.log('validate user',response)
+  const validateUsername = async (values) => {
+   const exists = await useFetch('/api/admin/get/username/'+values).then((response) => {
+      return !response.data.value.response;
     })
+    return exists ?? 'Username already exists';
   };
 </script>
 
@@ -20,9 +15,8 @@
          class="form-control"
          placeholder="Username"
          :rules="validateUsername"
-
          @input="(event) => emit('input', event.target.value)" />
-  <ErrorMessage :name="name" />
+  <ErrorMessage name="username" />
 </template>
 
 <style scoped lang="scss">
