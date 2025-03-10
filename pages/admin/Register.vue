@@ -6,7 +6,8 @@ const onSubmit = async (values) => {
     method: 'POST',
     body: {
       email: values.email,
-      password: values.password
+      password: values.password,
+      username: values.username
     }
   }).then(() => {
       console.log('User register ;)')

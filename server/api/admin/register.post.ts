@@ -4,7 +4,8 @@ export default defineEventHandler(async (event) => {
         method: 'POST',
         body:{
             email: body.email,
-            password: body.password
+            password: body.password,
+            username: body.username,
         }
     });
     return { response }
