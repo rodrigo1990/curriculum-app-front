@@ -7,6 +7,7 @@ const onSubmit = async (values) => {
     body: {
       email: values.email,
       password: values.password,
+      password_confirmation: values.repeatPassword,
       username: values.username
     }
   }).then(() => {

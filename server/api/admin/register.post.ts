@@ -5,7 +5,8 @@ export default defineEventHandler(async (event) => {
         body:{
             email: body.email,
             password: body.password,
-            username: body.username,
+            password_confirmation: body.password,
+            username: body.username
         }
     });
     return { response }
